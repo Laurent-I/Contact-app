@@ -5,8 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BlogPost extends Model
+class Company extends Model
 {
-    protected $fillable = ['title', 'content'];
     use HasFactory;
+
+    protected $fillable = ['name', 'address', 'email', 'website', 'contact'];
 }
