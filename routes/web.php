@@ -15,11 +15,11 @@ use App\Http\Controllers\ContactController;
 |
 */
 
-Route::get('/', function(){
-    return view('welcome');
-});
+//Route::get('/', function(){
+//    return view('welcome');
+//});
 
-Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
+Route::get('/', [ContactController::class, 'index'])->name('contacts.index');
 
 Route::post('/contacts', [ContactController::class, 'store'])->name('contacts.store');
 
