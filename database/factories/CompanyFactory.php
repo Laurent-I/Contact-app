@@ -22,7 +22,7 @@ class CompanyFactory extends Factory
             'address' => $this->faker->address,
             'website' => $this->faker->domainName,
             'email' => $this->faker->email,
-//            'user_id' => User::factory()
+            'user_id' => User::factory()
         ];
     }
 }
