@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('website')->nullable();
             $table->string('email');
+//            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
 

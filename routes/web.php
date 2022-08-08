@@ -34,3 +34,11 @@ Route::put('/contacts/{id}/update', [ContactController::class, 'update'])->name(
 Route::delete('/contacts/{id}/delete', [ContactController::class, 'destroy'])->name('contacts.destroy');
 
 
+
+Auth::routes();
+
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
