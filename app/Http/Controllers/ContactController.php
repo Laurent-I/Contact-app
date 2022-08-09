@@ -11,7 +11,6 @@ class ContactController extends Controller
 {
     public function __construct()
     {
-//        checking to see if a user is authenticated and email verification
         $this->middleware(['auth', 'verified']);
     }
 
