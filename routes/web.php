@@ -34,8 +34,6 @@ Route::put('/contacts/{id}/update', [ContactController::class, 'update'])->name(
 
 Route::delete('/contacts/{id}/delete', [ContactController::class, 'destroy'])->name('contacts.destroy');
 
-// Settings route
-
 Route::get('/settings/account', [AccountController::class, 'index']);
 
 
