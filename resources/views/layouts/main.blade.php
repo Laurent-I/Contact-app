@@ -30,7 +30,7 @@
             @auth
             <ul class="navbar-nav">
                 <li class="nav-item"><a href="#" class="nav-link">Companies</a></li>
-                <li class="nav-item active"><a href="{{route('contact.index')}}" class="nav-link">Contacts</a></li>
+                <li class="nav-item active"><a href="{{route('contacts.index')}}" class="nav-link">Contacts</a></li>
             </ul>
             @endauth
             <ul class="navbar-nav ml-auto">
