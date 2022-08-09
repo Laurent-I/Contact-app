@@ -9,17 +9,25 @@ use Illuminate\Validation\Validator;
 
 class ContactController extends Controller
 {
+    public function __construct()
+    {
+//        checking to see if a user is authenticated and email verification
+        $this->middleware(['auth', 'verified']);
+    }
+
     public function index()
     {
+        $user = auth()->user();
 
-        $companies = Company::orderBy('name')->pluck('name', 'id')->prepend('All Companies', '');
-        $contacts=Contact::latestFirst()->paginate(10);
+        $companies = $user->companies()->orderBy('name')->pluck('name', 'id')->prepend('All Companies', '');
+        $contacts=$user->contacts()->latestFirst()->paginate(10);
         return view('contacts.index', compact('contacts','companies'));
     }
     public function create()
     {
+
         $contact = new Contact();
-        $companies = Company::orderBy('name')->pluck('name', 'id')->prepend('All Companies', '');
+        $companies = auth()->user()->companies()->orderBy('name')->pluck('name', 'id')->prepend('All Companies', '');
 
         return view('contacts.create', compact('companies', 'contact'));
     }
@@ -38,7 +46,7 @@ class ContactController extends Controller
             'address' =>'required',
             'company_id' =>'required|exists:companies,id'
         ]);
-        Contact::create($request->all());
+        $request->user()->contacts()->create($request->all());
 
         return redirect()->route('contacts.index')->with('message', "Contact has been added successfully");
     }
@@ -46,7 +54,7 @@ class ContactController extends Controller
     public function edit($id)
     {
         $contact = Contact::findOrFail($id);
-        $companies = Company::orderBy('name')->pluck('name', 'id')->prepend('All Companies', '');
+        $companies = auth()->user()->companies()->orderBy('name')->pluck('name', 'id')->prepend('All Companies', '');
 
         return view('contacts.edit', compact('companies', 'contact'));
     }

@@ -29,8 +29,9 @@
         <div class="collapse navbar-collapse" id="navbar-toggler">
             @auth
             <ul class="navbar-nav">
+{{--                linked to home page--}}
                 <li class="nav-item"><a href="#" class="nav-link">Companies</a></li>
-                <li class="nav-item active"><a href="#" class="nav-link">Contacts</a></li>
+                <li class="nav-item active"><a href="{{route('contact.index')}}" class="nav-link">Contacts</a></li>
             </ul>
             @endauth
             <ul class="navbar-nav ml-auto">

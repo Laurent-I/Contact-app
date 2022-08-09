@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Settings\AccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,10 @@ Route::get('/contacts/{id}/edit', [ContactController::class, 'edit'])->name('con
 Route::put('/contacts/{id}/update', [ContactController::class, 'update'])->name('contacts.update');
 
 Route::delete('/contacts/{id}/delete', [ContactController::class, 'destroy'])->name('contacts.destroy');
+
+// Settings route
+
+Route::get('/settings/account', [AccountController::class, 'index']);
 
 
 
