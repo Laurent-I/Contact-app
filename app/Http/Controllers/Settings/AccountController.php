@@ -9,7 +9,6 @@ class AccountController extends Controller
 {
     public function __construct()
     {
-//        Settings controller with password confirmation
         $this->middleware(['auth', 'password.confirm']);
     }
     public function index()
