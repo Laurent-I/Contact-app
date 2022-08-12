@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\Settings\AccountController;
 
 /*
