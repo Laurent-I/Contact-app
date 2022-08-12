@@ -16,17 +16,16 @@ class ContactController extends Controller
 
     public function index()
     {
-        $user = auth()->user();
 
-        $companies = $user->companies()->orderBy('name')->pluck('name', 'id')->prepend('All Companies', '');
-        $contacts=$user->contacts()->latestFirst()->paginate(10);
+        $companies = Company::userCompanies();
+        $contacts=auth()->user()->contacts()->latestFirst()->paginate(10);
         return view('contacts.index', compact('contacts','companies'));
     }
     public function create()
     {
 
         $contact = new Contact();
-        $companies = auth()->user()->companies()->orderBy('name')->pluck('name', 'id')->prepend('All Companies', '');
+        $companies =Company::userCompanies();
 
         return view('contacts.create', compact('companies', 'contact'));
     }
@@ -51,7 +50,7 @@ class ContactController extends Controller
 
     public function edit(Contact $contact)
     {
-        $companies = auth()->user()->companies()->orderBy('name')->pluck('name', 'id')->prepend('All Companies', '');
+        $companies =Company::userCompanies();
 
         return view('contacts.edit', compact('companies', 'contact'));
     }
@@ -76,4 +75,5 @@ class ContactController extends Controller
         $contact->delete();
         return back()->with('message', "Contact has been deleted successfully");
     }
+
 }
