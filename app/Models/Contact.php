@@ -35,4 +35,9 @@ class Contact extends Model
 
     }
 
+//    public function getRouteKeyName()
+//    {
+//        return 'first_name';
+//    }
+
 }
