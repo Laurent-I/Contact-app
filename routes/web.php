@@ -35,6 +35,7 @@ use App\Http\Controllers\Settings\AccountController;
 //
 //Route::delete('/contacts/{contact}/delete', [ContactController::class, 'destroy'])->name('contacts.destroy');
 
+//Route::resource('/companies.contacts', ContactController::class)
 //Route::resource('/contacts', ContactController::class)->only(['create', 'store', 'edit', 'update', 'destroy']);
 
 Route::resources([
