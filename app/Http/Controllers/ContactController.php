@@ -30,9 +30,8 @@ class ContactController extends Controller
 
         return view('contacts.create', compact('companies', 'contact'));
     }
-    public function show($id)
+    public function show(Contact $contact)
     {
-        $contact =  Contact::findOrFail($id);
         return view('contacts.show',compact('contact'));
     }
 
@@ -50,15 +49,14 @@ class ContactController extends Controller
         return redirect()->route('contacts.index')->with('message', "Contact has been added successfully");
     }
 
-    public function edit($id)
+    public function edit(Contact $contact)
     {
-        $contact = Contact::findOrFail($id);
         $companies = auth()->user()->companies()->orderBy('name')->pluck('name', 'id')->prepend('All Companies', '');
 
         return view('contacts.edit', compact('companies', 'contact'));
     }
 
-    public function update($id, Request $request)
+    public function update(Contact $contact, Request $request)
     {
         $request->validate([
             'first_name' =>'required',
@@ -68,15 +66,13 @@ class ContactController extends Controller
             'company_id' =>'required|exists:companies,id'
         ]);
 //        Contact::create($request->all());
-        $contact = Contact::findOrFail($id);
         $contact->update($request->all());
 
         return redirect()->route('contacts.index')->with('message', "Contact has been updated successfully");
     }
 
-    public function destroy($id)
+    public function destroy(Contact $contact)
     {
-        $contact = Contact::findOrFail($id);
         $contact->delete();
         return back()->with('message', "Contact has been deleted successfully");
     }
