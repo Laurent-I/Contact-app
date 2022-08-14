@@ -4,11 +4,6 @@
         <form>
             <div class="row">
             <div class="col">
-                <select id="filter_company_id" name="company-id" class="custom-select">
-                    @foreach($companies as $id => $name)
-                    <option {{$id == request('company_id')? 'selected' : ''}} value="{{$id}}">{{$name}}</option>
-                    @endforeach
-                </select>
             </div>
             <div class="col">
                 <div class="input-group mb-3">

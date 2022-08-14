@@ -48,11 +48,7 @@
                                                 </td>
                                             </tr>
                                         @endforeach
-
-                                        <form id="form-delete" method="POST" style="display: none">
-                                            @method('DELETE')
-                                            @csrf
-                                        </form>
+                                        @include('layouts.-delete-form')
                                     @endif
                                 </tbody>
                             </table>
