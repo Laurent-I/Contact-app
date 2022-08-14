@@ -100,6 +100,6 @@ class CompanyController extends Controller
     {
         $company->delete();
 
-        return back()->with('message', 'Company deleted successfully');
+        return redirect()->route('companies.index')->with('message', 'Company deleted successfully');
     }
 }
