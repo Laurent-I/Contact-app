@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Settings\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ContactController;
@@ -48,6 +49,9 @@ Route::resources([
     ]);
 
 Route::get('/settings/account', [AccountController::class, 'index']);
+
+Route::get('/settings/profile', [ProfileController::class, 'edit'])->name('settings.profile.edit');
+Route::put('/settings/profile', [ProfileController::class, 'update'])->name('settings.profile.update');
 
 
 
