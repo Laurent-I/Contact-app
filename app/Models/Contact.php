@@ -12,10 +12,12 @@ class Contact extends Model
     use HasFactory;
 
     protected $fillable = ['first_name', 'last_name', 'email', 'phone', 'address', 'company_id'];
+    public $searchColumns = ['first_name', 'last_name', 'email'];
+    public $filterColumns = ['company_id'];
 
     public function company()
     {
-        return $this->belongsTo(Company::class);
+        return $this->belongsTo(Company::class)->withoutGlobalScope();
     }
     public function user()
     {
