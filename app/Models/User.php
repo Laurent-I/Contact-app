@@ -50,4 +50,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Company::class);
     }
+
+    public function fullName()
+    {
+        return $this->first_name . " ". $this->last_name;
+    }
 }
