@@ -84,3 +84,11 @@
         </div>
     </main>
 @endsection
+
+@section('styles')
+    <link href="{{asset('/css/jasny-bootstrap.min.css')}}" rel="stylesheet">
+@endsection
+
+@section('scripts')
+    <script src="{{asset('/js/jasny-bootstrap.min.js')}}"></script>
+@endsection
