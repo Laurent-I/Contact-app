@@ -19,11 +19,6 @@ class Company extends Model
         return $this->hasMany(Contact::class)->withoutGlobalScope(SearchScope::class);
     }
 
-    public static function boot()
-    {
-        parent::boot();
-        static::addGlobalScope(new SearchScope);
-    }
 
     public function user()
     {
@@ -36,5 +31,10 @@ class Company extends Model
             ->orderBy('name')
             ->pluck('name', 'id')
             ->prepend('All Companies', '');
+    }
+
+    public static function booted()
+    {
+        static::addGlobalScope(new SearchScope);
     }
 }
