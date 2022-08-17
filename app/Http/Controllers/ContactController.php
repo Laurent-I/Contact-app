@@ -20,6 +20,7 @@ class ContactController extends Controller
     {
 
         $companies = Company::userCompanies();
+        #eager loading
         $contacts=auth()->user()->contacts()->with('company')->latestFirst()->paginate(10);
         return view('contacts.index', compact('contacts','companies'));
     }
