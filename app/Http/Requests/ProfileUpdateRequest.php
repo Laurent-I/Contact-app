@@ -32,14 +32,14 @@ class ProfileUpdateRequest extends FormRequest
         ];
     }
 
-    public function handleRequest()
+    public function handleRequest($request)
     {
-        $profileData = $this->validated();
-        $profile = $this->user();
+        $profileData = $request->validated();
+        $profile = $request->user();
 
-        if($this->hasFile('profile_picture'))
+        if($request->hasFile('profile_picture'))
         {
-            $picture = $this->profile_picture;
+            $picture = $request->profile_picture;
             $fileName = "profile-picture-{$profile->id}." . $picture->getClientOriginalExtension();
             $picture->move(public_path('upload'), $fileName);
 
