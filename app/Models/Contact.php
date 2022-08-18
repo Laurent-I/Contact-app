@@ -31,13 +31,6 @@ class Contact extends Model
         return $query->orderBy('id', 'desc');
     }
 
-//    public static function booted()
-//    {
-////        parent::booted();
-//        static::addGlobalScope(new ContactSearchScope);
-//        static::addGlobalScope(new FilterScope);
-//
-//    }
 
 
 }
