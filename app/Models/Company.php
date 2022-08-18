@@ -33,8 +33,8 @@ class Company extends Model
             ->prepend('All Companies', '');
     }
 
-//    public static function booted()
-//    {
-//        static::addGlobalScope(new SearchScope);
-//    }
+    public static function booted()
+    {
+        static::addGlobalScope(new SearchScope);
+    }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Scopes\ContactSearchScope;
+use App\Scopes\FilterSearchScope;
 use App\Scopes\SearchScope;
 use App\Scopes\FilterScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,13 +11,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Contact extends Model
 {
-    use HasFactory;
+    use HasFactory, FilterSearchScope;
 
     protected $fillable = ['first_name', 'last_name', 'email', 'phone', 'address', 'company_id'];
+    public array $searchColumns = ['first_name', 'last_name', 'email'];
+    public array $filterColumns = ['company_id'];
 
     public function company()
     {
-        return $this->belongsTo(Company::class)->withoutGlobalScope();
+        return $this->belongsTo(Company::class)->withoutGlobalScopes();
     }
     public function user()
     {
@@ -27,13 +31,13 @@ class Contact extends Model
         return $query->orderBy('id', 'desc');
     }
 
-    public static function booted()
-    {
-//        parent::booted();
-        static::addGlobalScope(new SearchScope);
-        static::addGlobalScope(new FilterScope);
-
-    }
+//    public static function booted()
+//    {
+////        parent::booted();
+//        static::addGlobalScope(new ContactSearchScope);
+//        static::addGlobalScope(new FilterScope);
+//
+//    }
 
 
 }
