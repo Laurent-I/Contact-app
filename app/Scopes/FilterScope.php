@@ -10,7 +10,7 @@ class FilterScope implements Scope
 
     public function apply(Builder $builder, Model $model)
     {
-        if($companyId = request('company_id')){
+        if($companyId = request()->query('company_id')){
             $builder->where('company_id', $companyId);
         }
 

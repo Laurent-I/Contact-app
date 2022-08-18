@@ -10,7 +10,7 @@ class SearchScope implements Scope
 
     public function apply(Builder $builder, Model $model)
     {
-        if($search = request('search')){
+        if($search = request()->query('search')){
             $builder->where('first_name', 'LIKE', "%{$search}%");
             $builder->orwhere('email', 'LIKE', "%{$search}%");
             $builder->orwhere('last_name', 'LIKE', "%{$search}%");
