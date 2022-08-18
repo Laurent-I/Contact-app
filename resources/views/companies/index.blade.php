@@ -30,10 +30,8 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @if($message = session('message'))
-                                    <div class="alert alert-success">{{$message}}</div>
-                                @endif
-                                    @if($companies->count())
+                                @include('layouts._message')
+                                @if($companies->count())
                                         @foreach($companies as $index => $company)
                                             <tr>
                                                 <th scope="row">{{$index +$companies->firstItem()}}</th>
