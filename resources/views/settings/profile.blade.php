@@ -21,7 +21,7 @@
 
                 <div class="col-md-9">
                         @include('layouts._message')
-                    <form action="{{route('settings.profile.update')}}" method="POST">
+                    <form action="{{route('settings.profile.update')}}" enctype="multipart/form-data" method="POST">
                         @method('PUT')
                         @csrf
 
@@ -71,10 +71,15 @@
                                                 </div>
                                                 <div class="fileinput-preview fileinput-exists img-thumbnail" style="max-width: 150px; max-height: 150px;"></div>
                                                 <div class="mt-2">
-                                                    <span class="btn btn-outline-secondary btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
+                                                    <span class="btn btn-outline-secondary btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="profile_picture" accept="image/*"></span>
                                                     <a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Remove</a>
                                                 </div>
                                             </div>
+                                            @error('profile_picture')
+                                            <div class="text-danger">
+                                                {{$message}}
+                                            </div>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
