@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\HomeController;
@@ -15,7 +16,6 @@ use App\Http\Controllers\AboutController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 //Route::get('/', function () {
 //    return view('home.index', []);
 //})->name('home.index');
@@ -44,15 +44,15 @@ $posts = [
         'content' => 'This is the short intro to PHP',
         'is_new' => false
     ],
-        3=> [
-    'title' => 'Intro to Golang',
-    'content' => 'This is the short intro to Golang',
-    'is_new' => false
-]
+    3=> [
+        'title' => 'Intro to Golang',
+        'content' => 'This is the short intro to Golang',
+        'is_new' => false
+    ]
 ];
 
-Route::resource('posts', \App\Http\Controllers\PostsController::class)
-    ->only(['index','show', 'create', 'store']);
+Route::resource('posts', PostsController::class);
+//    ->only(['index','show', 'create', 'store', 'edit', 'update' ]);
 
 //Route::get('/posts', function () use ($posts){
 ////    dd(request()->all());
@@ -80,13 +80,6 @@ Route::prefix('/fun')->name('fun.')->group(function() use($posts){
         return response($posts, 201)->header('Content-Type', 'application/json')->cookie('My_Cookie', 'Laurent', 3600);
     })->name('responses');
 
-    Route::get('/redirect', function (){
-        return redirect('/contact');
-    })->name('redirect');
-
-    Route::get('/back', function (){
-        return back();
-    })->name('back');
 
     Route::get('/named-routes', function (){
         return redirect()->route('posts.show', ['id' => 1]);
